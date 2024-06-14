@@ -1,6 +1,7 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import "tailwindcss/tailwind.css";
+import { BrowserRouter } from "react-router-dom";
+import "./main.css";
 import App from "./app.tsx";
 
 const rootNode = document.getElementById("root")!;
@@ -8,6 +9,10 @@ const rootNode = document.getElementById("root")!;
 rootNode &&
   createRoot(rootNode).render(
     <StrictMode>
-      <App />
+      <Suspense fallback="Loading...">
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Suspense>
     </StrictMode>
   );
