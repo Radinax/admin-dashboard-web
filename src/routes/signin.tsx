@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createAccount } from "@/api/auth";
+import { createSession } from "@/api/auth";
 import { useNavigate } from "react-router-dom";
 import AuthForm from "@/components/auth/auth-form";
 
@@ -10,18 +10,17 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export default function SignupRoute() {
+export default function SigninRoute() {
   const navigate = useNavigate();
 
   async function onSubmit(values: FormValues) {
-    await createAccount(values.username, values.password);
-    navigate("/signin");
-    console.log("Succesfully registed", values.username);
+    await createSession(values.username, values.password);
+    navigate("/");
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
-      <AuthForm type="SIGNUP" onSubmit={onSubmit} />
+      <AuthForm type="SIGNIN" onSubmit={onSubmit} />
     </div>
   );
 }

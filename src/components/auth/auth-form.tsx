@@ -21,6 +21,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { camelCaseToNormalCase } from "@/utils/camelcase-to-normalcase";
 
 const formSchema = z.object({
   username: z.string().trim().toLowerCase().email(),
@@ -29,11 +30,15 @@ const formSchema = z.object({
 
 export type FormValues = z.infer<typeof formSchema>;
 
+export type FormType = "SIGNUP" | "SIGNIN";
+
 export type Props = Readonly<{
-  onSubmit: (value: FormValues) => void;
+  type: FormType;
+  onSubmit: (value: FormValues) => Promise<void>;
 }>;
 
 const AuthForm = (props: Props) => {
+  const type = props.type;
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,9 +52,11 @@ const AuthForm = (props: Props) => {
         <fieldset>
           <Card className="w-full max-w-sm">
             <CardHeader>
-              <CardTitle className="text-2xl">Signup</CardTitle>
+              <CardTitle className="text-2xl">
+                {camelCaseToNormalCase(type)}
+              </CardTitle>
               <CardDescription>
-                Enter your email and password below to signup
+                Enter your email and password below to `${type.toLowerCase()}`
               </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4">
