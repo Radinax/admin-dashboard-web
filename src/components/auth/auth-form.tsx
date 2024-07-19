@@ -34,7 +34,7 @@ export type FormType = "SIGNUP" | "SIGNIN";
 
 export type Props = Readonly<{
   type: FormType;
-  onSubmit: (value: FormValues) => Promise<void>;
+  onSubmit: (value: FormValues) => void;
 }>;
 
 const AuthForm = (props: Props) => {
