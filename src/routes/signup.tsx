@@ -1,13 +1,9 @@
 import { z } from "zod";
 import { createAccount } from "@/api/auth";
 import { useNavigate } from "react-router-dom";
-import AuthForm from "@/components/auth/auth-form";
+import AuthForm from "@/components/auth/auth.form";
 import { toast } from "sonner";
-
-const formSchema = z.object({
-  username: z.string().trim().toLowerCase().email(),
-  password: z.string().min(8).max(255),
-});
+import { formSchema } from "@/schemas";
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -15,7 +11,7 @@ export default function SignupRoute() {
   const navigate = useNavigate();
 
   function onSubmit(values: FormValues) {
-    const op = createAccount(values.username, values.password);
+    const op = createAccount(values.username, values.password, values.email);
     toast.promise(op, {
       success: "Your account was just created",
       error: "Something went wrong while creating account",

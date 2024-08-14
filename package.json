@@ -15,6 +15,7 @@
     "@hookform/resolvers": "^3.6.0",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
+    "@tanstack/react-query": "^5.51.23",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "init": "^0.1.2",
@@ -23,7 +24,9 @@
     "navigation-menu": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.0.13",
     "react-hook-form": "^7.51.5",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.23.1",
     "shadcn-ui": "^0.8.0",
     "sonner": "^1.5.0",
@@ -33,6 +36,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.51.15",
     "@testing-library/jest-dom": "^6.4.1",
     "@testing-library/react": "^14.2.1",
     "@types/react": "^18.2.51",

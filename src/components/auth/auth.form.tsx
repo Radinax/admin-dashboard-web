@@ -22,11 +22,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { camelCaseToNormalCase } from "@/utils/camelcase-to-normalcase";
-
-const formSchema = z.object({
-  username: z.string().trim().toLowerCase().email(),
-  password: z.string().min(8).max(255),
-});
+import { formSchema } from "@/schemas";
 
 export type FormValues = z.infer<typeof formSchema>;
 
@@ -43,6 +39,7 @@ const AuthForm = (props: Props) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
+      email: "",
       password: "",
     },
   });
@@ -59,13 +56,37 @@ const AuthForm = (props: Props) => {
                 Enter your email and password below to `${type.toLowerCase()}`
               </CardDescription>
             </CardHeader>
+
             <CardContent className="grid gap-4">
+              {type === "SIGNUP" && (
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Username</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          placeholder="enter your username"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormDescription>
+                        Your username will be your email if you dont input
+                        anything.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
               <FormField
                 control={form.control}
-                name="username"
+                name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input
                         type="email"

@@ -1,13 +1,9 @@
 import { z } from "zod";
 import { createSession } from "@/api/auth";
 import { useNavigate } from "react-router-dom";
-import AuthForm from "@/components/auth/auth-form";
+import AuthForm from "@/components/auth/auth.form";
 import { toast } from "sonner";
-
-const formSchema = z.object({
-  username: z.string().trim().toLowerCase().email(),
-  password: z.string().min(8).max(255),
-});
+import { formSchema } from "@/schemas";
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -15,7 +11,7 @@ export default function SigninRoute() {
   const navigate = useNavigate();
 
   function onSubmit(values: FormValues) {
-    const op = createSession(values.username, values.password);
+    const op = createSession(values.email, values.password);
     toast.promise(op, {
       success: () => {
         navigate("/");
