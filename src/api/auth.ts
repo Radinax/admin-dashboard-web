@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { api } from "@/lib/api-client";
 
 export async function createAccount(

@@ -17,7 +17,6 @@ export const getUser = (): Promise<User> => {
 };
 
 export function getUserQueryOptions() {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   return queryOptions({
     queryKey: ["get-user"],
     queryFn: getUser,
@@ -29,7 +28,6 @@ export interface GetUserOptions {
 }
 
 export const useUser = ({ queryConfig }: GetUserOptions = {}) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   return useQuery({
     ...getUserQueryOptions(),
     ...queryConfig,

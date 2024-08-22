@@ -1,4 +1,4 @@
-import Home, { homeLoader } from "@/routes/home";
+import Home from "@/routes/home";
 import NotFoundRoute from "@/routes/not-found";
 import SigninRoute from "@/routes/signin";
 import SignupRoute from "@/routes/signup";
@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { AuthContext } from "./auth.provider";
 import { AppRoot } from "@/routes/root";
+import { homeLoader } from "@/features/home/home.loader";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { QueryClient, DefaultOptions } from "@tanstack/react-query";
 
 export const queryConfig = {

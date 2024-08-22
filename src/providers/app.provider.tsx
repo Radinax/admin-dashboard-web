@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { MainErrorFallback } from "@/components/error/error";
 import { Spinner } from "@/components/ui";
 import { Suspense } from "react";

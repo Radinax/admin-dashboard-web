@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { RouterProvider } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
