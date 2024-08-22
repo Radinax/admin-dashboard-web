@@ -19,10 +19,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
 import { camelCaseToNormalCase } from "@/utils/camelcase-to-normalcase";
 import { formSchema } from "@/schemas";
+import { Button, Input } from "@/components/ui";
 
 export type FormValues = z.infer<typeof formSchema>;
 

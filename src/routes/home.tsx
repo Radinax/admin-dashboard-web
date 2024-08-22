@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { getUserQueryOptions, useUser } from "@/api/auth";
+import { getUserQueryOptions, useUser } from "@/api";
 import { QueryClient } from "@tanstack/react-query";
 
 // eslint-disable-next-line react-refresh/only-export-components

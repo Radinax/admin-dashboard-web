@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { createAccount } from "@/api/auth";
 import { useNavigate } from "react-router-dom";
-import AuthForm from "@/components/auth/auth.form";
+import AuthForm from "@/features/auth/components/auth-form/auth-form";
 import { toast } from "sonner";
 import { formSchema } from "@/schemas";
 
