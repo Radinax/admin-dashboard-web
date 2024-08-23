@@ -21,11 +21,12 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { camelCaseToNormalCase } from "@/utils/camelcase-to-normalcase";
 import { formSchema } from "@/schemas";
-import { Button, Input } from "@/components/ui";
+import { Button, Input, Link } from "@/components/ui";
+import { capitalizeFirstLetter } from "@/utils/capitalize";
 
 export type FormValues = z.infer<typeof formSchema>;
 
-export type FormType = "SIGNUP" | "SIGNIN";
+export type FormType = "REGISTER" | "LOGIN";
 
 export type Props = Readonly<{
   type: FormType;
@@ -42,22 +43,23 @@ const AuthForm = (props: Props) => {
       password: "",
     },
   });
+  const action = type.toLowerCase();
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(props.onSubmit)}>
-        <fieldset>
+        <fieldset className="flex flex-col justify-center items-center">
           <Card className="w-full max-w-sm">
             <CardHeader>
               <CardTitle className="text-2xl">
                 {camelCaseToNormalCase(type)}
               </CardTitle>
               <CardDescription>
-                Enter your email and password below to `${type.toLowerCase()}`
+                Enter your email and password below to {action}
               </CardDescription>
             </CardHeader>
 
             <CardContent className="grid gap-4">
-              {type === "SIGNUP" && (
+              {type === "REGISTER" && (
                 <FormField
                   control={form.control}
                   name="username"
@@ -124,10 +126,19 @@ const AuthForm = (props: Props) => {
             </CardContent>
             <CardFooter>
               <Button type="submit" className="w-full">
-                Sign up
+                {capitalizeFirstLetter(action)}
               </Button>
             </CardFooter>
           </Card>
+          {type === "LOGIN" ? (
+            <Link className="underline text-xs" to="/register">
+              Click to register account
+            </Link>
+          ) : (
+            <Link className="underline text-xs" to="/login">
+              If you have an account then click to login
+            </Link>
+          )}
         </fieldset>
       </form>
     </Form>

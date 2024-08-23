@@ -1,23 +1,30 @@
-import { RouterProvider } from "react-router-dom";
-import { useQueryClient } from "@tanstack/react-query";
-import { useMemo } from "react";
-import { createRouter } from "./providers/react-router.provider";
-import { AppProvider } from "./providers/app.provider";
+import { Suspense } from "react";
+import { Spinner } from "./components/ui";
+import { Route, Routes } from "react-router-dom";
+import LoginRoute from "./routes/signin";
+import Register from "./routes/signup";
+import HomeRoute from "./routes/home";
+import Dashboard from "./providers/dashboard.provider";
 
-const AppRouter = () => {
-  const queryClient = useQueryClient();
-
-  const router = useMemo(() => createRouter(queryClient), [queryClient]);
-
-  return <RouterProvider router={router} />;
-};
+/**
+ *
+ * username: admin
+ * email: admin@admin.com
+ * pass: Admin345678.
+ */
 
 export default function App() {
   return (
     <>
-      <AppProvider>
-        <AppRouter />
-      </AppProvider>
+      <Suspense fallback={<Spinner size="xl" />}>
+        <Routes>
+          <Route path="/login" element={<LoginRoute />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Dashboard />}>
+            <Route path="" element={<HomeRoute />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </>
   );
 }

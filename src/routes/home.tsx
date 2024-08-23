@@ -1,9 +1,13 @@
 import { useUser } from "@/api";
+import Home from "@/features/home/home";
+import { Navigate } from "react-router-dom";
 
-const Home = () => {
+const HomeRoute = () => {
   const { data } = useUser();
-  console.log("user", data);
-  return <div>Hello {data?.username}</div>;
+  if (!data) {
+    return <Navigate to={"/signin"} />;
+  }
+  return <Home username={data?.username} />;
 };
 
-export default Home;
+export default HomeRoute;

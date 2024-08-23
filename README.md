@@ -1,4 +1,10 @@
-# ADMIN DASHBOARD: THOR ENTERPRISE
+# React CSR Dashboard integrated with a bun-hono-drizzle API
+
+Personal frontend stack for private SAAS projects as a showcase for new members of the coaching system.
+
+We use Vite CSR to create this project with Tailwind, React Router and React Query.
+
+## Install
 
 To install dependencies:
 
@@ -16,10 +22,17 @@ bun run dev
 
 - api
 - components
-  - ...components
+  - ...rest of components
   - ui
     ...ui-components
 - context
+- features
+  - ...rest of features
+  - home
+    - components
+      - home-charts
+        - home.chart.tsx
+    - home.tsx
 - hooks
 - lib
   - ...rest of libs
@@ -100,3 +113,5 @@ export { useUser, getUserQueryOptions, type User } from "./user"
 ## Final words
 
 This is an example of how to create a medium to large project, more often than not creating the repo and doing all the setups is what takes the most time out of a developer.
+
+**Made by Engineer Adrian Beria**

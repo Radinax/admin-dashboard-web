@@ -13,7 +13,7 @@ export type User = z.infer<typeof userSchema>;
  * GET USER
  */
 export const getUser = (): Promise<User> => {
-  return fetchData("/me");
+  return fetchData("me");
 };
 
 export function getUserQueryOptions() {

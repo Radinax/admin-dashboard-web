@@ -13,17 +13,21 @@ export default function SignupRoute() {
   function onSubmit(values: FormValues) {
     const op = createAccount(values.username, values.password, values.email);
     toast.promise(op, {
-      success: "Your account was just created",
-      error: "Something went wrong while creating account",
+      success: () => {
+        navigate("/login");
+        return "Your account was just created";
+      },
+      error: (error: unknown) => {
+        console.log({ error });
+        return "Something went wrong while creating account";
+      },
       loading: "Creating account...",
     });
-    navigate("/signin");
-    console.log("Succesfully registed", values.username);
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
-      <AuthForm type="SIGNUP" onSubmit={onSubmit} />
+      <AuthForm type="REGISTER" onSubmit={onSubmit} />
     </div>
   );
 }
